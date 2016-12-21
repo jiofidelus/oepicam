@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.ummiscoyde</groupId>
+	<artifactId>oepicam</artifactId>
+	<name>fr.ummisco.yde.o-epicam</name>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	<properties>
+		<java-version>1.6</java-version>
+		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+	</properties>
+	
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+				
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>      
+		
+<!-- 		convert from java objects to json   -->
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.7</version>
+		</dependency>
+		
+<!-- 		System dependencies -->
+		
+		<dependency>
+	        <groupId>org.antlr</groupId>
+	        <artifactId>antlr-runtime</artifactId>
+	        <version>3.5</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/antlr-runtime-3.5.jar</systemPath>
+	    </dependency>
+
+		<dependency>
+	        <groupId>org.apache</groupId>
+	        <artifactId>commons.io</artifactId>
+	        <version>2.4</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/commons-io-2.4.jar</systemPath>
+	    </dependency>
+
+		
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-core</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-core-6.4.0.Final.jar</systemPath>
+	    </dependency>
+
+		
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools.compiler</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-compiler-6.4.0.Final.jar</systemPath>
+	    </dependency>
+	
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools.decisiontables</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-decisiontables-6.4.0.Final.jar</systemPath>
+	    </dependency>
+
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools.osgi</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-osgi-integration-6.4.0.Final.jar</systemPath>
+	    </dependency>
+
+
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools.reteoo</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-reteoo-6.4.0.Final.jar</systemPath>
+	    </dependency>
+
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools.templates</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/drools-templates-6.4.0.Final.jar</systemPath>
+	    </dependency>
+
+		<dependency>
+	        <groupId>com.google</groupId>
+	        <artifactId>com.google</artifactId>
+	        <version>18.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/guava-18.0.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>com.google</groupId>
+	        <artifactId>com.google.inject</artifactId>
+	        <version>4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/guice-4.0.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>com.google</groupId>
+	        <artifactId>com.google.inject.assistedinject</artifactId>
+	        <version>4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/guice-assistedinject-4.0.jar</systemPath>
+	    </dependency>
+
+	    
+		<dependency>
+	        <groupId>com.google</groupId>
+	        <artifactId>com.google.inject.multibindings</artifactId>
+	        <version>4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/guice-multibindings-4.0.jar</systemPath>
+	    </dependency>
+   
+		<dependency>
+	        <groupId>org.kie</groupId>
+	        <artifactId>org.kie.api</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/kie-api-6.4.0.Final.jar</systemPath>
+	    </dependency>
+		
+		<dependency>
+	        <groupId>org.kie</groupId>
+	        <artifactId>org.kie.internal</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/kie-internal-6.4.0.Final.jar</systemPath>
+	    </dependency>
+	    
+	    
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>knowledge-api</artifactId>
+	        <version>6.4.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/knowledge-api-6.4.0.Final.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.coode</groupId>
+	        <artifactId>coode.mdock</artifactId>
+	        <version>2.0.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/mdock-2.0.1.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.mvel2</groupId>
+	        <artifactId>mvel2</artifactId>
+	        <version>2.2.8</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/mvel2-2.2.8.Final.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.eclipse</groupId>
+	        <artifactId>eclipse.core</artifactId>
+	        <version>3.5.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/org.eclipse.core.jobs-3.5.0.v20100515.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.eclipse</groupId>
+	        <artifactId>eclipse.equinox</artifactId>
+	        <version>3.6.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/org.eclipse.equinox.common-3.6.0.v20100503.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.eclipse</groupId>
+	        <artifactId>eclipse.equinox.registry</artifactId>
+	        <version>3.5.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/org.eclipse.equinox.registry-3.5.0.v20100503.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.eclipse</groupId>
+	        <artifactId>eclipse.osgi</artifactId>
+	        <version>3.6.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/org.eclipse.osgi-3.6.0.v20100517.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>com.clarkparsia</groupId>
+	        <artifactId>owlapi-osgidistribution</artifactId>
+	        <version>4.2.5</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/owlapi-osgidistribution-4.2.5.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.protege</groupId>
+	        <artifactId>protege-common</artifactId>
+	        <version>5.0.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/protege-common-5.0.0.jar</systemPath>
+	    </dependency>
+	    
+	    
+		<dependency>
+	        <groupId>org.protege</groupId>
+	        <artifactId>protege-editor-core</artifactId>
+	        <version>5.0.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/protege-editor-core-5.0.0.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.protege</groupId>
+	        <artifactId>protege-editor-owl</artifactId>
+	        <version>5.0.0</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/protege-editor-owl-5.0.0.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.semarglproject</groupId>
+	        <artifactId>semargl-core</artifactId>
+	        <version>0.6.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/semargl-core-0.6.1.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.semarglproject</groupId>
+	        <artifactId>semargl-rdf</artifactId>
+	        <version>0.6.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/semargl-rdf-0.6.1.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.semarglproject</groupId>
+	        <artifactId>semargl-rdfa</artifactId>
+	        <version>0.6.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/semargl-rdfa-0.6.1.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.semarglproject</groupId>
+	        <artifactId>semargl-sesame</artifactId>
+	        <version>0.6.1</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/semargl-sesame-0.6.1.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-model</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-model-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-api</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-api-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-binary</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-binary-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-datatypes</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-datatypes-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-languages</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-languages-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-n3</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-n3-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-nquads</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-nquads-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-ntriples</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-ntriples-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-rdfjson</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-rdfjson-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-rdfxml</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-rdfxml-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-trig</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-trig-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-trix</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-trix-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.openrdf</groupId>
+	        <artifactId>sesame-rio-turtle</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-rio-turtle-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>info.aduna</groupId>
+	        <artifactId>sesame-rio-util</artifactId>
+	        <version>2.7.16</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/sesame-util-2.7.16.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.swrlapi</groupId>
+	        <artifactId>swrlapi</artifactId>
+	        <version>1.0.12</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/swrlapi-1.0.12.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.swrlapi</groupId>
+	        <artifactId>swrlapi-drools-engine</artifactId>
+	        <version>1.0.12</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/swrlapi-drools-engine-1.0.12.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.swrltab</groupId>
+	        <artifactId>swrltab-plugin</artifactId>
+	        <version>1.0.12</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/swrltab-plugin-1.0.12.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>gnu.trove</groupId>
+	        <artifactId>trove4j</artifactId>
+	        <version>3.0.3</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/trove4j-3.0.3.jar</systemPath>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.tukaani</groupId>
+	        <artifactId>xz</artifactId>
+	        <version>1.5</version>
+	        <scope>system</scope>
+	        <systemPath>${basedir}/src/lib/xz-1.5.jar</systemPath>
+	    </dependency>
+	    
+	    
+<!-- 		<dependency> -->
+<!-- 	        <groupId>org.tukaani/groupId> -->
+<!-- 	        <artifactId>trove4j</artifactId> -->
+<!-- 	        <version>3.0.3</version> -->
+<!-- 	        <scope>system</scope> -->
+<!-- 	        <systemPath>${basedir}/src/lib/xz-1.5.jar</systemPath> -->
+<!-- 	    </dependency> -->
+	    
+	    
+	    
+		  <!-- https://mvnrepository.com/artifact/edu.stanford.swrl/swrlapi -->
+<!-- 	<dependency> -->
+<!-- 	    <groupId>edu.stanford.swrl</groupId> -->
+<!-- 	    <artifactId>swrlapi</artifactId> -->
+<!-- 	    <version>1.1.1</version> -->
+<!-- 	</dependency> -->
+<!-- 		  https://mvnrepository.com/artifact/edu.stanford.swrl/swrlapi-drools-engine -->
+<!-- 	<dependency> -->
+<!-- 	    <groupId>edu.stanford.swrl</groupId> -->
+<!-- 	    <artifactId>swrlapi-drools-engine</artifactId> -->
+<!-- 	    <version>1.1.1</version> -->
+<!-- 	</dependency> -->
+
+	</dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+                    </additionalBuildcommands>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>org.test.int1.Main</mainClass>
+                </configuration>
+            </plugin>
+<!-- *******************************************************************-->
+<!-- * 																	*-->
+<!-- * 					System dependency									*-->
+<!-- ****************************************************************** *-->
+
+        </plugins> 
+    </build>
+    
+    
+</project>
+
+
+<!-- For Jar files in local maven directory -->
+<!-- <dependency> -->
+<!--         <groupId>test</groupId> -->
+<!--         <artifactId>x</artifactId> -->
+<!--         <version>1.0</version> -->
+<!--     </dependency> -->
